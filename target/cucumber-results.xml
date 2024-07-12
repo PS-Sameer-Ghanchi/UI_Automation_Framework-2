@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="3" time="30.34">
+    <testcase classname="Home Features" name="Login with Invalid Credentials" time="9.865">
+        <system-out><![CDATA[Given User is on home site..................................................passed
+]]></system-out>
+    </testcase>
+    <testcase classname="Login Features" name="Login with Invalid Credentials" time="4.995">
+        <system-out><![CDATA[Given User is on Google1 site...............................................passed
+]]></system-out>
+    </testcase>
+    <testcase classname="Login Features" name="Login with Invalid Credentials 2" time="14.928">
+        <system-out><![CDATA[Given User is on Google2 site...............................................passed
+]]></system-out>
+    </testcase>
+</testsuite>

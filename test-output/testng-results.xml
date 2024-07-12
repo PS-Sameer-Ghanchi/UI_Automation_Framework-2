@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-01-28T21:55:41 PST" name="Parallel Test Suite" finished-at="2024-01-28T21:56:14 PST" duration-ms="33224">
+    <groups>
+      <group name="cucumber">
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:testRunner.TestngTestRunner@707194ba]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+      </group> <!-- cucumber -->
+    </groups>
+    <test started-at="2024-01-28T21:55:41 PST" name="ParallelTest" finished-at="2024-01-28T21:56:14 PST" duration-ms="33224">
+      <class name="testRunner.TestngTestRunner">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:testRunner.TestngTestRunner@707194ba]" started-at="2024-01-28T21:55:41 PST" name="setUpClass" finished-at="2024-01-28T21:55:42 PST" duration-ms="1184" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@7133da86]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpClass -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:testRunner.TestngTestRunner@707194ba]" started-at="2024-01-28T21:55:42 PST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-01-28T21:55:53 PST" duration-ms="10470" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["CMS_SAP_01_Login"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Sap Homepage"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:testRunner.TestngTestRunner@707194ba]" started-at="2024-01-28T21:55:53 PST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-01-28T21:56:03 PST" duration-ms="10371" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["CMS_SAP_02_CMS-Tab"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Sap Homepage"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:testRunner.TestngTestRunner@707194ba]" started-at="2024-01-28T21:56:03 PST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-01-28T21:56:14 PST" duration-ms="10464" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["CMS_SAP_03_CMS-SAP"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Sap Homepage"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:testRunner.TestngTestRunner@707194ba]" started-at="2024-01-28T21:56:14 PST" name="tearDownClass" finished-at="2024-01-28T21:56:14 PST" duration-ms="654" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+      </class> <!-- testRunner.TestngTestRunner -->
+    </test> <!-- ParallelTest -->
+  </suite> <!-- Parallel Test Suite -->
+</testng-results>
