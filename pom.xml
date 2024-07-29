@@ -5,16 +5,22 @@
     <groupId>io.github.ps-sameer-ghanchi</groupId>
     <artifactId>your-artifact-id</artifactId>
     <version>1.0.0</version>
+    <packaging>bundle</packaging>
     <name>3E Exchange</name>
-    <description>3E Exchange logIn with Invalid Credentials</description>
     <url>https://github.com/PS-Sameer-Ghanchi/UI_Automation_Framework-2</url>
 
-    <!-- Properties for encoding and compiler version -->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <java.version>22</java.version>
+        <maven-gpg-plugin.version>3.0.1</maven-gpg-plugin.version>
+        <maven-javadoc-plugin.version>2.9.1</maven-javadoc-plugin.version>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
+        <maven-bundle-plugin.version>5.1.2</maven-bundle-plugin.version>
     </properties>
+
     <dependencies>
         <!-- Selenium -->
         <dependency>
@@ -22,14 +28,12 @@
             <artifactId>selenium-java</artifactId>
             <version>4.22.0</version>
         </dependency>
-
         <!-- WebDriverManager -->
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
             <version>5.9.1</version>
         </dependency>
-
         <!-- Lombok (provided scope) -->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -37,7 +41,6 @@
             <version>1.18.34</version>
             <scope>provided</scope>
         </dependency>
-
         <!-- Cucumber dependencies -->
         <dependency>
             <groupId>io.cucumber</groupId>
@@ -69,21 +72,18 @@
             <artifactId>cucumber-junit</artifactId>
             <version>7.18.0</version>
         </dependency>
-
         <!-- Extent Reports -->
         <dependency>
             <groupId>com.aventstack</groupId>
             <artifactId>extentreports</artifactId>
             <version>5.1.2</version>
         </dependency>
-
         <!-- Fillo -->
         <dependency>
             <groupId>com.codoid.products</groupId>
             <artifactId>fillo</artifactId>
             <version>1.22</version>
         </dependency>
-
         <!-- Logging -->
         <dependency>
             <groupId>log4j</groupId>
@@ -95,28 +95,24 @@
             <artifactId>slf4j-api</artifactId>
             <version>2.1.0-alpha1</version>
         </dependency>
-
         <!-- JSON -->
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>20240303</version>
         </dependency>
-
         <!-- JUnit -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.13.2</version>
         </dependency>
-
         <!-- librbary-retry -->
         <dependency>
             <groupId>io.github.librbary</groupId>
             <artifactId>librbary-retry</artifactId>
             <version>0.0.1</version>
         </dependency>
-
         <!-- Commons Lang3 -->
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -133,11 +129,20 @@
 
     <build>
         <plugins>
-            <!-- Maven GPG Plugin for signing artifacts -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
-                <version>3.2.4</version>
+                <version>${maven-gpg-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>sign-artifacts</id>
@@ -145,77 +150,21 @@
                         <goals>
                             <goal>sign</goal>
                         </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <gpgArguments>
-                        <arg>--batch</arg>
-                        <arg>--yes</arg>
-                        <arg>--pinentry-mode</arg>
-                        <arg>loopback</arg>
-                    </gpgArguments>
-                    <useAgent>false</useAgent>
-                    <gpgKeyname>1F82058E0F4678EC72D76707D069D9435C75D6CF</gpgKeyname>
-                    <gpgPassphraseServerId>gpg.passphrase</gpgPassphraseServerId>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>3.2.1</version>
-                <configuration>
-                    <createDependencyReducedPom>false</createDependencyReducedPom>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
                         <configuration>
-                            <filters>
-                                <filter>
-                                    <artifact>*:*</artifact>
-                                    <excludes>
-                                        <exclude>META-INF/*.SF</exclude>
-                                        <exclude>META-INF/*.DSA</exclude>
-                                        <exclude>META-INF/*.RSA</exclude>
-                                    </excludes>
-                                </filter>
-                            </filters>
+                            <keyname>0x5C75D6CF</keyname>
+                            <gpgArguments>
+                                <arg>--pinentry-mode</arg>
+                                <arg>loopback</arg>
+                            </gpgArguments>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
-            
 
-            <!-- Maven Assembly Plugin for creating bundles -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.3.0</version>
-                <executions>
-                    <execution>
-                        <id>make-assembly</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                        <configuration>
-                            <descriptors>
-                                <descriptor>src/main/assembly/assembly.xml</descriptor>
-                            </descriptors>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            
-            
-            <!-- Maven Source Plugin for attaching sources -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>3.2.1</version>
+                <version>${maven-source-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>attach-sources</id>
@@ -225,16 +174,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.sonatype.central</groupId>
-                <artifactId>central-publishing-maven-plugin</artifactId>
-                <version>0.5.0</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <publishingServerId>central</publishingServerId>
-                </configuration>
-            </plugin>
-            <!-- Maven Javadoc Plugin for attaching Javadocs -->
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -252,29 +192,44 @@
                     </execution>
                 </executions>
             </plugin>
-            
 
-
-            <!-- Maven Deploy Plugin for deploying artifacts -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-deploy-plugin</artifactId>
-                <version>3.1.2</version>
+                <version>2.8.2</version>
+                <configuration>
+                    <pomFile>${project.basedir}/pom.xml</pomFile>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>${maven-bundle-plugin.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
+                        <Bundle-Version>${project.version}</Bundle-Version>
+                        <Export-Package>
+                            your.package.name.*;version="${project.version}"
+                        </Export-Package>
+                    </instructions>
+                </configuration>
             </plugin>
         </plugins>
     </build>
 
     <distributionManagement>
         <snapshotRepository>
-            <id>nexus</id>
-            <url>http://localhost:8081/repository/maven-snapshots/</url>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/PS-Sameer-Ghanchi/UI_Automation_Framework-2</url>
         </snapshotRepository>
         <repository>
-            <id>nexus</id>
-            <url>http://localhost:8081/repository/maven-releases/</url>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/PS-Sameer-Ghanchi/UI_Automation_Framework-2</url>
         </repository>
     </distributionManagement>
-
 
     <developers>
         <developer>
@@ -292,9 +247,8 @@
     </scm>
     <licenses>
         <license>
-            <name>The Apache Software License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            <distribution>repo</distribution>
+            <name>MIT License</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
         </license>
     </licenses>
 </project>
