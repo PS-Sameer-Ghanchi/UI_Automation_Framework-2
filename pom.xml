@@ -6,7 +6,7 @@
     <artifactId>your-artifact-id</artifactId>
     <version>1.0.0</version>
     <packaging>bundle</packaging>
-    <name>3E Exchange</name>
+    <name>productsquads</name>
     <url>https://github.com/PS-Sameer-Ghanchi/UI_Automation_Framework-2</url>
 
     <properties>
